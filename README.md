@@ -24,9 +24,10 @@ Click the "Add Resource" button and add the URL path to the DateTime Card script
 Configuration
 To add the DateTime Card to your Lovelace UI, edit your dashboard and add a new manual card with the following configuration:
 
-yaml
-Copy code
+
 type: 'custom:datetime-card'
+
+
 Customization
 The card is designed to be easily customizable. You can modify the source code to change the date and time format, as well as the card's style including font, background color, and size.
 
