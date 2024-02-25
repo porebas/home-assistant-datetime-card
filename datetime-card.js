@@ -1,16 +1,21 @@
 class DateTimeCard extends HTMLElement {
-  set hass(hass) {
-    if (!this.content) {
-      this.innerHTML = `
-        <ha-card>
-          <div class="card-content" id="datetime"></div>
-        </ha-card>
-      `;
-      this.content = this.querySelector('#datetime');
-      this.style();
-      this.updateDateTime();
-      setInterval(() => this.updateDateTime(), 60000); // Aktualizuj co minutę
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+
+  setConfig(config) {
+    if (!this.shadowRoot.hasChildNodes()) {
+      const card = document.createElement('ha-card');
+      const content = document.createElement('div');
+      content.className = "card-content";
+      card.appendChild(content);
+      this.shadowRoot.appendChild(card);
+      this.content = content;
+      this.styleCard();
     }
+    this.updateDateTime();
+    setInterval(() => this.updateDateTime(), 60000); // Aktualizuj co minutę
   }
 
   updateDateTime() {
@@ -21,7 +26,7 @@ class DateTimeCard extends HTMLElement {
     `;
   }
 
-  style() {
+  styleCard() {
     const style = document.createElement('style');
     style.textContent = `
       .card-content {
@@ -36,7 +41,7 @@ class DateTimeCard extends HTMLElement {
         border-radius: 4px;
       }
     `;
-    this.appendChild(style);
+    this.shadowRoot.appendChild(style);
   }
 }
 
