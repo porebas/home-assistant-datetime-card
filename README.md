@@ -1,38 +1,23 @@
-DateTime Card for Home Assistant
-The DateTime Card is a custom Lovelace card for Home Assistant that displays the current date and time. This card is designed to be easy to install, customize, and use within your Home Assistant environment. The date and time are displayed in the format DD.MM.YYYY and HH:MM respectively, offering a simple and clear view of the current time and date.
+# DateTime Card for Home Assistant
 
-Prerequisites
-Home Assistant installation
-HACS (Home Assistant Community Store) installed
-Installation
-Add Custom Repository to HACS:
+This custom Lovelace card displays the current date and time in `DD.MM.YYYY` and `HH:MM` format, respectively. It's designed for easy integration into Home Assistant and allows for simple customization.
 
-Navigate to HACS in your Home Assistant sidebar.
-Go to "Integrations" and then click on the three dots in the top right corner and select "Custom repositories".
-Add the URL of this GitHub repository and select Lovelace as the category.
-Click "Add".
-Install DateTime Card:
+## Installation
 
-Still in HACS, go to "Integrations".
-Find the DateTime Card in the list of new repositories and click "Install".
-Add the Resource:
-After installation, you need to add a reference to the DateTime Card in your Lovelace configuration to load the card.
+### Using HACS (Home Assistant Community Store)
 
-Navigate to "Configuration" > "Lovelace Dashboards".
-Click on "Resources" tab.
-Click the "Add Resource" button and add the URL path to the DateTime Card script: /hacsfiles/datetime-card/datetime-card.js as a JavaScript Module.
-Configuration
-To add the DateTime Card to your Lovelace UI, edit your dashboard and add a new manual card with the following configuration:
+- Ensure you have [HACS](https://hacs.xyz/) installed in your Home Assistant instance.
+- Go to HACS > Frontend > "+ Explore & Add Repositories" button.
+- Search for "DateTime Card" and add it.
+- Add the resource reference in your `configuration.yaml` or through the Lovelace Dashboard configuration as shown below.
 
+### Manual Installation
 
-type: 'custom:datetime-card'
+1. Download `datetime-card.js` from this repository.
+2. Place the file in your `www` folder inside your Home Assistant configuration directory.
+3. Add a resource reference to your Lovelace configuration:
 
-
-Customization
-The card is designed to be easily customizable. You can modify the source code to change the date and time format, as well as the card's style including font, background color, and size.
-
-Support
-If you encounter any issues or have suggestions for improvements, please open an issue on the GitHub repository. Contributions are also welcome!
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+```yaml
+resources:
+  - url: /local/datetime-card.js
+    type: module
